@@ -3,9 +3,9 @@
 </script>
 
 <div class="stage-container">
-	<h2>Hello from Component1</h2>
-	<p>This is stage 1 of the application</p>
-	<button on:click={nextStage}>Continue to Component2</button>
+	<h2>For Sammi Only</h2>
+	<p>Verify that you are sammi</p>
+	<button on:click={nextStage}>verify</button>
 </div>
 
 <style>
@@ -14,32 +14,41 @@
 		padding: 2rem;
 		border: 2px solid #e0e0e0;
 		border-radius: 8px;
-		background: #f9f9f9;
+		background: url('$lib/assets/stichie Background Removed.png') center/cover;
 		min-width: 300px;
+		min-height: 400px;
+		position: relative;
+		color: 	#2972b6;
+		text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
 	}
 
 	h2 {
-		color: #333;
+		color: white;
 		margin-bottom: 1rem;
+		font-size: 2.5rem;
 	}
 
 	p {
 		margin-bottom: 2rem;
-		color: #666;
+		color: white;
+		font-size: 1.2rem;
 	}
 
 	button {
-		background: #007bff;
+		background: #2972b6;
 		color: white;
-		border: none;
+		border: 2px solid white;
 		padding: 12px 24px;
-		border-radius: 4px;
+		border-radius: 25px;
 		cursor: pointer;
 		font-size: 16px;
-		transition: background-color 0.2s;
+		font-weight: bold;
+		transition: all 0.2s;
+		box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 	}
 
 	button:hover {
-		background: #0056b3;
+		background: #4ebcff;
+		transform: scale(1.05);
 	}
 </style>
