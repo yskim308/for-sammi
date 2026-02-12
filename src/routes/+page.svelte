@@ -7,6 +7,7 @@
   import Component3 from "$lib/components/Component3.svelte";
   import Component4 from "$lib/components/Component4.svelte";
   import Component5 from "$lib/components/Component5.svelte";
+  import Component6 from "$lib/components/Component6.svelte";
 
   // FIX: Use $state() for variables that will change
   let currentStage = $state(0);
@@ -19,6 +20,7 @@
     Component3,
     Component4,
     Component5,
+    Component6,
   ];
 
   // Svelte 5 Helper: Derive the current component so it updates automatically
@@ -34,7 +36,7 @@
   });
 
   function nextStage() {
-    if (currentStage < 4) {
+    if (currentStage < 6) {
       currentStage++;
     }
   }
