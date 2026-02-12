@@ -6,24 +6,47 @@
   import Component2 from "$lib/components/Component2.svelte";
   import Component3 from "$lib/components/Component3.svelte";
   import Component4 from "$lib/components/Component4.svelte";
+  import Component5 from "$lib/components/Component5.svelte";
 
-  let currentStage = 0;
-  let wrongAnswerGif = "";
-  let correctAnswerGif = "";
+  // FIX: Use $state() for variables that will change
+  let currentStage = $state(0);
+  let wrongAnswerGif = $state("");
+  let correctAnswerGif = $state("");
 
-  const components = [Component1, Component2, Component3, Component4];
+  const components = [
+    Component1,
+    Component2,
+    Component3,
+    Component4,
+    Component5,
+  ];
+
+  // Svelte 5 Helper: Derive the current component so it updates automatically
+  let CurrentComponent = $derived(components[currentStage]);
+
+  // Set stage from URL parameter after component mounts
+  $effect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const stageParam = urlParams.get("stage");
+    if (stageParam) {
+      currentStage = parseInt(stageParam);
+    }
+  });
 
   function nextStage() {
-    if (currentStage < 3) {
+    if (currentStage < 4) {
       currentStage++;
     }
   }
 
-  function triggerWrongAnswer(gifPath: string = defaultWrongAnswerGif) {
+  function triggerWrongAnswer(
+    gifPath: string = defaultWrongAnswerGif,
+    timeout: number = 2000,
+  ) {
     wrongAnswerGif = gifPath;
     setTimeout(() => {
       wrongAnswerGif = "";
-    }, 2000);
+    }, timeout);
   }
 
   function triggerCorrectAnswer(gifPath: string = defaultCorrectAnswerGif) {
@@ -40,18 +63,15 @@
       <img src={wrongAnswerGif} alt="Wrong Answer" />
     </div>
   {/if}
+
   {#if correctAnswerGif}
     <div class="explosion-overlay">
       <img src={correctAnswerGif} alt="Correct Answer" />
     </div>
   {/if}
-  {#if components[currentStage]}
-    <svelte:component
-      this={components[currentStage]}
-      {nextStage}
-      {triggerWrongAnswer}
-      {triggerCorrectAnswer}
-    />
+
+  {#if CurrentComponent}
+    <CurrentComponent {nextStage} {triggerWrongAnswer} {triggerCorrectAnswer} />
   {/if}
 </main>
 
