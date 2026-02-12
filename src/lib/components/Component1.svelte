@@ -12,7 +12,7 @@
 	.stage-container {
 		text-align: center;
 		padding: 2rem;
-		background: url('$lib/assets/stichie Background Removed.png') center/cover;
+		background:	#4ebcff url('$lib/assets/stichie Background Removed.png') center/cover;
 		width: 100vw;
 		height: 100vh;
 		position: relative;
