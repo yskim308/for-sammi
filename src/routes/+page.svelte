@@ -27,12 +27,20 @@
 </main>
 
 <style>
-	main {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		min-height: 100vh;
+	:global(body, html) {
 		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+	
+	main {
+		margin: 0;
+		padding: 0;
 		font-family: Arial, sans-serif;
+		width: 100vw;
+		height: 100vh;
+		display: block;
 	}
 </style>

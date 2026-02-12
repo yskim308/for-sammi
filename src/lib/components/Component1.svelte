@@ -12,14 +12,16 @@
 	.stage-container {
 		text-align: center;
 		padding: 2rem;
-		border: 2px solid #e0e0e0;
-		border-radius: 8px;
 		background: url('$lib/assets/stichie Background Removed.png') center/cover;
-		min-width: 300px;
-		min-height: 400px;
+		width: 100vw;
+		height: 100vh;
 		position: relative;
-		color: 	#2972b6;
-		text-shadow: 2px 2px 2px rgba(0,0,0,0.8);
+		color: white;
+		text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 
 	h2 {
