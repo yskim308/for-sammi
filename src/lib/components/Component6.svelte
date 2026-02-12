@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  import happyCat from "$lib/assets/happycat.gif";
+
   let { nextStage, triggerWrongAnswer, triggerCorrectAnswer } = $props<{
     nextStage: () => void;
     triggerWrongAnswer: () => void;
@@ -23,8 +25,10 @@
   const PADDING = 150;
 
   function handleCorrect() {
-    triggerCorrectAnswer();
-    nextStage();
+    triggerCorrectAnswer(happyCat);
+    setTimeout(() => {
+      nextStage();
+    }, 2000);
   }
 
   function handleWrong() {
