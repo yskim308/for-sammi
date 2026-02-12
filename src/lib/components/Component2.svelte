@@ -55,7 +55,7 @@
     .stage-container {
         text-align: center;
         padding: 2rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: url('$lib/assets/amongus-bg.jpg');
         width: 100vw;
         height: 100vh;
         display: flex;
