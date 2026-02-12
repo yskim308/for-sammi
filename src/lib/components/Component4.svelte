@@ -111,7 +111,9 @@
         sYear === TARGET_DATE.year
       ) {
         triggerCorrectAnswer(alohaStitch);
-        nextStage();
+        setTimeout(() => {
+          nextStage();
+        }, 2000);
       } else {
         triggerWrongAnswer(angryStitch);
 
