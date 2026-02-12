@@ -1,6 +1,7 @@
 <script lang="ts">
 
-  import wrongAnwerGif from '$lib/assets/among-us-twerk.gif';
+  import defaultWrongAnswerGif from '$lib/assets/among-us-twerk.gif';
+  import defaultCorrectAnswerGif from '$lib/assets/amongus-dance.gif'
 
 	import Component1 from '$lib/components/Component1.svelte';
 	import Component2 from '$lib/components/Component2.svelte';
@@ -9,6 +10,7 @@
 
 	let currentStage = 0;
 	let wrongAnswerGif = '';
+  let correctAnswerGif = '';
 
 	const components = [
 		Component1,
@@ -23,12 +25,20 @@
 		}
 	}
 
-	function triggerWrongAnswer(gifPath: string = wrongAnwerGif) {
+	function triggerWrongAnswer(gifPath: string = defaultWrongAnswerGif) {
 		wrongAnswerGif = gifPath;
 		setTimeout(() => {
 			wrongAnswerGif = '';
-		}, 1000);
+		}, 2000);
 	}
+
+  function triggerCorrectAnswer(gifPath: string = defaultCorrectAnswerGif) {
+    correctAnswerGif = gifPath;
+    setTimeout(() => {
+      correctAnswerGif = '';
+    }, 2000)
+  }
+
 </script>
 
 <main>
@@ -37,8 +47,13 @@
 			<img src={wrongAnswerGif} alt="Wrong Answer" />
 		</div>
 	{/if}
+	{#if correctAnswerGif}
+		<div class="explosion-overlay">
+			<img src={correctAnswerGif} alt="Correct Answer" />
+		</div>
+	{/if}
 	{#if components[currentStage]}
-		<svelte:component this={components[currentStage]} {nextStage} {triggerWrongAnswer} />
+		<svelte:component this={components[currentStage]} {nextStage} {triggerWrongAnswer} {triggerCorrectAnswer} />
 	{/if}
 </main>
 
