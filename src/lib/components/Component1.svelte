@@ -1,11 +1,11 @@
 <script lang="ts">
-	export let nextStage: () => void;
+  const { nextStage } = $props();
 </script>
 
 <div class="stage-container">
 	<h2>For Sammi Only</h2>
 	<p>Verify that you are sammi</p>
-	<button on:click={nextStage}>verify</button>
+	<button onclick={nextStage}>verify</button>
 </div>
 
 <style>
